@@ -277,25 +277,6 @@ assistant: 총 메모리 8GB 중 4.2GB 사용 중이고, 3.8GB가 사용 가능�
 - `get_ubuntu_process_info`: 상위 CPU 사용 프로세스
 - `get_ubuntu_network_info`: 네트워크 인터페이스 정보
 
-## 🧪 Test
-
-```bash
-# 기본 test 실행
-python -m pytest tests/
-
-# MCP 연결 test
-python tests/test_mcp_module.py
-
-# Gemini 연동 test  
-python tests/test_gemini.py
-```
-
-## 🤝 기여하기
-
-1. Fork 후 branch 생성
-2. 기능 개발 또는 bug 수정
-3. Test code 작성
-4. PR 생성
 
 ### 개발 우선순위
 
@@ -305,7 +286,7 @@ python tests/test_gemini.py
 - [ ] CLI 명령어 옵션 확장 (Typer 활용)
 - [ ] Web UI 개발 (선택사항)
 
-## 🐛 알려진 이슈
+## 알려진 이슈
 
 - OpenAI, Ollama에서 Function Calling 미완성
 - 일부 Ubuntu 명령어에서 권한 문제 가능 
