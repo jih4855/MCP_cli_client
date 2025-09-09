@@ -138,22 +138,95 @@
                 <h2 class="section-title">Quick Start</h2>
                 
                 <div class="install-options">
-                    <div class="install-card active" data-method="global">
-                        <h3>Global Install (Recommended)</h3>
+                    <div class="install-card active" data-method="pipx">
+                        <h3>pipx Install (Recommended)</h3>
+                        <p>Isolated environment + global command</p>
+                    </div>
+                    <div class="install-card" data-method="global">
+                        <h3>Manual Global Install</h3>
                         <p>Use mcp-client command anywhere</p>
                     </div>
                     <div class="install-card" data-method="dev">
                         <h3>Development Mode</h3>
                         <p>For code modification and development</p>
                     </div>
-                    <div class="install-card" data-method="pipx">
-                        <h3>pipx Install</h3>
-                        <p>Isolated environment + global command</p>
-                    </div>
                 </div>
 
                 <div class="install-content">
-                    <div class="install-method active" id="global-install">
+                    <div class="install-method active" id="pipx-install">
+                        <div class="config-card">
+                            <h3>pipx Install (Recommended)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Safest installation method recommended for Ubuntu/Linux environments.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">sudo apt update && sudo apt install pipx</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx ensurepath</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">source ~/.bashrc</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Clone and Install Project</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Clone the project and install with pipx.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">git clone https://github.com/jih4855/MCP_cli_client.git</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">cd MCP_cli_client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx install .</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx ensurepath</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">source ~/.bashrc</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Run Anywhere</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Now you can use the mcp-client command anywhere.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="output">Running safely in isolated environment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="install-method" id="global-install">
                         <div class="config-card">
                             <h3>Clone Repository</h3>
                             <p style="color: #94a3b8; margin-bottom: 1rem;">Copy the project to your local machine.</p>
@@ -279,54 +352,6 @@
                         </div>
                     </div>
 
-                    <div class="install-method" id="pipx-install">
-                        <div class="config-card">
-                            <h3>Install pipx</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">First install pipx.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pip install pipx</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Install Project</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Install project in isolated environment.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pipx install .</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Run in Isolated Environment</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Execute the pipx-installed command.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">mcp-client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="output">Running in isolated environment</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

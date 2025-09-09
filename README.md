@@ -41,7 +41,32 @@ Ubuntu/Linux 환경에서 MCP server와 연동하여 다양한 시스템 도구�
 
 ## 🚀 빠른 시작
 
-### 글로벌 설치 (권장)
+### pipx 설치 (권장)
+
+**Ubuntu/Linux 환경에서 권장하는 안전한 설치 방법입니다.**
+
+1. **pipx 설치 및 PATH 설정**
+```bash
+sudo apt update && sudo apt install pipx
+pipx ensurepath
+source ~/.bashrc
+```
+
+2. **프로젝트 클론 및 설치**
+```bash
+git clone https://github.com/jih4855/MCP_cli_client.git
+cd MCP_cli_client
+pipx install .
+pipx ensurepath
+source ~/.bashrc
+```
+
+3. **어디서든 실행**
+```bash
+mcp-client  # 격리된 환경에서 안전하게 실행
+```
+
+### 수동 글로벌 설치
 
 1. **저장소 클론**
 ```bash
@@ -293,19 +318,9 @@ python tests/test_gemini.py
 
 | 방법 | 장점 | 단점 |
 |------|------|------|
-| **글로벌 설치** | 어디서든 `mcp-client` 실행 | 시스템 Python에 설치 |
-| **개발 모드** | 코드 수정 즉시 반영 | 가상환경 활성화 필요 |
 | **pipx 설치** | 격리된 환경 + 글로벌 명령어 | pipx 별도 설치 필요 |
-
-### pipx 설치 (권장)
-```bash
-# pipx 설치 (한 번만)
-pip install pipx
-pipx install .
-
-# 실행
-mcp-client  # 격리된 환경에서 실행
-```
+| **수동 글로벌 설치** | 어디서든 `mcp-client` 실행 | 시스템 Python에 설치 |
+| **개발 모드** | 코드 수정 즉시 반영 | 가상환경 활성화 필요 |
 
 ## 🔗 관련 링크
 
