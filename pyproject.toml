@@ -28,7 +28,8 @@ include = [
   "ascii_banner.py",
   "src/",
   "src/config/config.yaml",
-  "src/config/mcp_config.json"
+  "src/config/mcp_config.json",
+  "mcp_server/"
 ]
 
 [tool.hatch.build.targets.sdist]

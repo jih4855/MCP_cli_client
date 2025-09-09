@@ -1,12 +1,8 @@
 {
   "mcpServers": {
-    "tosspayments-integration-guide": {
-      "command": "npx",
-      "args": ["-y", "@tosspayments/integration-guide-mcp@latest"]
-    },
     "ubuntu-info-server": {
       "command": "python",
-      "args": ["UPDATE_THIS_PATH/mcp_server/MCP_official.py"],
+  "args": ["-m", "mcp_server.MCP_official"],
       "description": "시간 및 시스템 정보 도구"
     }
   }
