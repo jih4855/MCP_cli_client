@@ -126,7 +126,7 @@ max_context: 20
 session_id: "default"
 ```
 
-3. **MCP server 설정** (`src/config/mcp_config.json`)
+3. **예제 MCP server 설정** (`src/config/mcp_config.json`)
 ```json
 {
   "mcpServers": {
@@ -162,7 +162,7 @@ $ mcp-client
 
 ✅ config.yaml 로드 완료
 🛠️  총 8개 도구 로드 완료
-🔍 서버 설정: ['ubuntu-info']
+🔍 서버 설정: ['ubuntu-info-server']
 🧠 LLM 초기화 완료: gemini-2.5-flash (gemini)
 
 user: 현재 시간과 시스템 정보 알려줘
@@ -173,7 +173,7 @@ assistant: 현재 시간은 2025년 1월 9일이고, Ubuntu 22.04 시스템에�
 커널 버전은 5.15.0이며, 시스템 업타임은 2일 14시간입니다.
 
 user: 끝
-대화 종료
+assistant: 대화 종료
 ```
 
 ## 📁 프로젝트 구조
@@ -209,9 +209,9 @@ typer_cli/
 ```json
 {
   "mcpServers": {
-    "ubuntu-info": {
+    "ubuntu-info-server": {
       "command": "python",
-      "args": ["mcp_server/MCP_official.py"],
+      "args": ["/absolute/path/to/typer_cli/mcp_server/MCP_official.py"],
       "description": "Ubuntu 시스템 정보 조회"
     },
     "filesystem": {
@@ -237,7 +237,7 @@ user: 안녕하세요!
 assistant: 안녕하세요! 무엇을 도와드릴까요?
 
 user: 끝
-대화 종료
+assistant: 대화 종료
 ```
 
 ### 도구 사용 예시
