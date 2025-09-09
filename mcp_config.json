@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "mac-info-server": {
+    "ubuntu-info-server": {
       "command": "python",
-      "args": ["/Users/jeong-inhyo/typer_cli/mcp_server/MCP_official.py"],
-      "description": "맥 시스템 정보 제공 도구"
+      "args": ["mcp_server/MCP_official.py"],
+      "description": "Ubuntu 시스템 정보 제공 도구"
     }
   }
 }
