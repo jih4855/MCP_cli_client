@@ -45,8 +45,8 @@ Ubuntu/Linux 환경에서 MCP server와 연동하여 다양한 시스템 도구�
 
 1. **저장소 클론**
 ```bash
-git clone <repository-url>
-cd typer_cli
+git clone https://github.com/jih4855/MCP_cli_client.git
+cd MCP_cli_client
 ```
 
 2. **가상환경 설정 및 설치**
@@ -67,8 +67,8 @@ mcp-client  # 가상환경 활성화 없이 실행 가능
 
 1. **저장소 클론 및 가상환경**
 ```bash
-git clone <repository-url>
-cd typer_cli
+git clone https://github.com/jih4855/MCP_cli_client.git
+cd MCP_cli_client
 python -m venv venv
 source venv/bin/activate
 ```
