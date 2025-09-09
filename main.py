@@ -50,7 +50,7 @@ async def chat():
         model=config.get("model", "gemini-2.5-flash"),
         system_prompt=config.get("system_prompt", ""),
         provider=config.get("provider", ""),
-        api_key=os.getenv("api_key", ""),
+        api_key=os.getenv("GOOGLE_API_KEY", os.getenv("api_key", "")),
         api_base=config.get("api_base", None),
         session_id=session_id,
         max_context=config.get("max_context", 20),

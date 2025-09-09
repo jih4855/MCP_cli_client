@@ -300,6 +300,77 @@
                         </div>
                     </div>
 
+                    <div class="install-method" id="pipx-install">
+                        <div class="config-card">
+                            <h3>pipx Install (Recommended: Isolated + Global Execution)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Stable and isolated installation method for all environments.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx install git+https://github.com/jih4855/MCP_cli_client.git</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client --help</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔐 Quick API Key Setup</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Choose one of the following methods:</p>
+                            
+                            <h4 style="color: #e2e8f0; margin: 1rem 0 0.5rem;">1) Dedicated Config Directory (Recommended)</h4>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mkdir -p ~/.config/mcp-client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">cat > ~/.config/mcp-client/.env <<'EOF'</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="command">GOOGLE_API_KEY=your_gemini_api_key_here</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="command">EOF</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4 style="color: #e2e8f0; margin: 1rem 0 0.5rem;">2) Permanent Setup (zshrc)</h4>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">cat >> ~/.zshrc <<'EOF'</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="command">export GOOGLE_API_KEY=your_gemini_api_key_here</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="command">EOF</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">source ~/.zshrc</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="install-method" id="dev-install">
                         <div class="config-card">
                             <h3>Development Mode (Direct main execution)</h3>

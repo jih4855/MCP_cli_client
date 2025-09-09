@@ -275,7 +275,13 @@
                                     </div>
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">echo 'GOOGLE_API_KEY=발급한_gemini_api_key' > ~/.config/mcp-client/.env</span>
+                                        <span class="command">cat > ~/.config/mcp-client/.env <<'EOF'</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="command">GOOGLE_API_KEY=발급한_gemini_api_key</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="command">EOF</span>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +294,13 @@
                                 <div class="terminal-body">
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">echo 'export GOOGLE_API_KEY=발급한_gemini_api_key' >> ~/.zshrc</span>
+                                        <span class="command">cat >> ~/.zshrc <<'EOF'</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="command">export GOOGLE_API_KEY=발급한_gemini_api_key</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="command">EOF</span>
                                     </div>
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
