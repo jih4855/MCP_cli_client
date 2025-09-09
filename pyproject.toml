@@ -16,7 +16,7 @@ dependencies = [
 mcp-client = "main:main"
 
 [tool.hatch.build.targets.wheel]
-packages = [".", "src"]
+packages = ["src"]
 
 [build-system]
 requires = ["hatchling"]
