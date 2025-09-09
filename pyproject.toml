@@ -18,6 +18,7 @@ mcp-client = "main:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
+py-modules = ["main", "ascii_banner"]
 
 [build-system]
 requires = ["hatchling"]
