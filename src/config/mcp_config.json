@@ -1,9 +1,13 @@
 {
   "mcpServers": {
-    "ubuntu-info-server": {
-      "command": "python3",
-      "args": ["mcp_server/MCP_official.py"],
-      "description": "Ubuntu 시스템 정보 제공 도구"
+    "tosspayments-integration-guide": {
+      "command": "npx",
+      "args": ["-y", "@tosspayments/integration-guide-mcp@latest"]
+    },
+    "time-tools": {
+      "command": "/Users/jeong-inhyo/typer_cli/.venv/bin/python",
+      "args": ["/Users/jeong-inhyo/typer_cli/time_MCP.py"],
+      "description": "시간 및 파일 관리 도구"
     }
   }
 }

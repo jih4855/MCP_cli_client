@@ -8,33 +8,13 @@ from ascii_banner import print_clean_banner, print_minimal_banner
 from dotenv import load_dotenv
 import os
 from importlib import resources  # <= 단일 import
+from src.load_config import Configloader
 
 load_dotenv()
 Memory = MemoryManager()
 app = typer.Typer()
 mcp = MCPmanager()
-
-def _load_config_simple():
-    # 1) 환경변수 지정 경로 > 2) 현재폴더 config.yaml/yml > 3) 패키지 내 기본값
-    candidates = [os.getenv("MCP_CLIENT_CONFIG"), "config.yaml", "config.yml"]
-    for p in candidates:
-        if p and os.path.isfile(p):
-            try:
-                with open(p, "r", encoding="utf-8") as f:
-                    data = yaml.safe_load(f) or {}
-                print(f"✅ config 로드: {p}")
-                return data
-            except Exception as e:
-                print(f"⚠️ 로컬 config 읽기 실패 {p}: {e}")
-    # 패키지 fallback (src/config/config.yaml)
-    try:
-        text = resources.files("src.config").joinpath("config.yaml").read_text(encoding="utf-8")
-        data = yaml.safe_load(text) or {}
-        print("✅ 패키지 내 config 사용 (읽기전용)")
-        return data
-    except Exception:
-        print("⚠️ config 없음 (기본값 사용)")
-        return {}
+config_loader = Configloader()
 
 @app.command()
 async def chat():
@@ -42,7 +22,7 @@ async def chat():
     print_minimal_banner()
     print("💡 '끝'을 입력하면 대화가 종료됩니다.\n")
 
-    config = _load_config_simple()
+    config = config_loader.load_config_simple()
 
     # MCP 서버 시작
     mcp.load_config()
