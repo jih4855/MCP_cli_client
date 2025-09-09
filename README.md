@@ -307,10 +307,6 @@ pipx install .
 mcp-client  # 격리된 환경에서 실행
 ```
 
-## 📄 License
-
-오픈소스 프로젝트입니다.
-
 ## 🔗 관련 링크
 
 - [MCP 공식 문서](https://modelcontextprotocol.io/)
