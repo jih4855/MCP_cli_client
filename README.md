@@ -34,7 +34,7 @@ Ubuntu/Linux 환경에서 MCP server와 연동하여 다양한 시스템 도구�
 
 | 기능 | 상태 | 설명 |
 |------|------|------|
-| **Gemini LLM** | ✅ 완료 | 다중 도구 병렬 실행, Function Calling 지원 |
+| **Gemini LLM** | ✅ 완료 | MCP 도구 병렬 실행 지원 |
 | **Ubuntu MCP Server** | ✅ 완료 | 시스템 정보, 메모리, CPU, 프로세스 모니터링 |
 | **Ollama LLM** | 🚧 개발중 | 기본 채팅만 지원 |
 | **OpenAI LLM** | 🚧 개발중 | 기본 채팅만 지원 |
@@ -42,49 +42,62 @@ Ubuntu/Linux 환경에서 MCP server와 연동하여 다양한 시스템 도구�
 
 ## 🚀 빠른 시작
 
-### 글로벌 설치 (권장)
+### pipx 설치 (권장)
 
-**Ubuntu/Linux 환경에서 권장하는 설치 방법입니다.**
+**모든 환경에서 안정적이고 격리된 설치 방법입니다.**
 
-1. **저장소 클론**
+#### Ubuntu/Debian
+```bash
+# pipx 설치
+sudo apt update && sudo apt install pipx
+pipx ensurepath
+
+# 프로젝트 설치
+pipx install git+https://github.com/jih4855/MCP_cli_client.git
+
+# 어디서든 실행
+mcp-client
+```
+
+#### macOS
+```bash
+# pipx 설치
+brew install pipx
+pipx ensurepath
+
+# 프로젝트 설치
+pipx install git+https://github.com/jih4855/MCP_cli_client.git
+
+# 어디서든 실행
+mcp-client
+```
+
+#### CentOS/RHEL/Rocky Linux
+```bash
+# Python 및 pipx 설치
+sudo dnf install python3-pip
+pip3 install --user pipx
+pipx ensurepath
+
+# 프로젝트 설치
+pipx install git+https://github.com/jih4855/MCP_cli_client.git
+
+# 어디서든 실행
+mcp-client
+```
+
+### 글로벌 설치 (macOS만 권장)
+
+**macOS에서만 안정적으로 작동합니다.**
+
 ```bash
 git clone https://github.com/jih4855/MCP_cli_client.git
 cd MCP_cli_client
-```
-
-2. **가상환경 설정 및 설치**
-```bash
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 pip install -e .
-```
-
-3. **어디서든 실행**
-```bash
-mcp-client  # 가상환경 활성화 없이 실행 가능
-```
-
-### pipx 설치
-
-1. **저장소 클론**
-```bash
-git clone https://github.com/jih4855/MCP_cli_client.git
-cd MCP_cli_client
-```
-
-2. **가상환경 설정 및 설치**
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate   # Windows
-pip install -r requirements.txt
-pip install -e .
-```
-
-3. **어디서든 실행**
-```bash
-mcp-client  # 가상환경 활성화 없이 실행 가능
+mcp-client
 ```
 
 ### 개발 모드 설치
@@ -269,7 +282,7 @@ assistant: 총 메모리 8GB 중 4.2GB 사용 중이고, 3.8GB가 사용 가능�
 1. **MCP Server 시작**: 모든 설정된 서버와 병렬 연결
 2. **도구 수집**: 각 서버에서 사용 가능한 도구 목록 수집
 3. **LLM 초기화**: 선택된 provider로 LLM 인스턴스 생성
-4. **사용자 입력 처리**: Function Calling으로 필요한 도구 결정
+4. **사용자 입력 처리**: MCP를 통한 필요 도구 호출
 5. **병렬 도구 실행**: 선택된 도구들을 동시에 실행
 6. **결과 통합**: 모든 결과를 통합하여 자연어 응답 생성
 
@@ -285,26 +298,26 @@ assistant: 총 메모리 8GB 중 4.2GB 사용 중이고, 3.8GB가 사용 가능�
 
 ### 개발 우선순위
 
-- [ ] OpenAI Function Calling 완성
-- [ ] Ollama Function Calling 구현  
+- [ ] OpenAI MCP 도구 지원 완성
+- [ ] Ollama MCP 도구 지원 구현  
 - [ ] 더 많은 Ubuntu 도구 추가 (패키지 관리, 로그 분석 등)
 - [ ] CLI 명령어 옵션 확장 (Typer 활용)
 - [ ] Web UI 개발 (선택사항)
 
 ## 알려진 이슈
 
-- OpenAI, Ollama에서 Function Calling 미완성
+- OpenAI, Ollama에서 MCP 도구 지원 미완성
 - 일부 Ubuntu 명령어에서 권한 문제 가능 
 - 대용량 시스템 정보 출력 시 응답 지연 가능
 - 네트워크 연결이 불안정할 때 MCP 서버 재연결 필요
 
 ## 📦 설치 방법 요약
 
-| 방법 | 장점 | 단점 |
-|------|------|------|
-| **글로벌 설치** | 어디서든 `mcp-client` 실행, 안정적 | 시스템 Python에 설치 |
-| **pipx 설치** | 격리된 환경 + 글로벌 명령어 | 라이브러리 사전 설치 필요 |
-| **개발 모드** | 코드 수정 즉시 반영 | 가상환경 활성화 필요 |
+| 방법 | 장점 | 단점 | 지원 환경 |
+|------|------|------|----------|
+| **pipx 설치** | 격리된 환경 + 글로벌 명령어, 의존성 충돌 없음 | pipx 사전 설치 필요 | ✅ **모든 환경 권장** |
+| **글로벌 설치** | 어디서든 `mcp-client` 실행 | 시스템 Python에 설치, 권한 문제 | ⚠️ macOS만 권장 |
+| **개발 모드** | 코드 수정 즉시 반영 | 가상환경 활성화 필요 | ✅ 개발용 |
 
 ## 🔗 관련 링크
 
@@ -315,10 +328,10 @@ assistant: 총 메모리 8GB 중 4.2GB 사용 중이고, 3.8GB가 사용 가능�
 ---
 
 ⭐ **Gemini LLM + Ubuntu MCP Server 완전 지원**
-- Function Calling을 통한 다중 도구 병렬 실행
+- MCP를 통한 다중 도구 병렬 실행
 - 실시간 시스템 모니터링 및 정보 조회
 - 글로벌 설치로 어디서든 실행 가능
 
 🚧 **개발 진행 중**
-- OpenAI, Ollama Function Calling 구현
+- OpenAI, Ollama MCP 도구 지원 구현
 - 더 많은 시스템 도구 및 MCP 서버 추가
