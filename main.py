@@ -23,15 +23,13 @@ config_loader = Configloader()
 async def chat():
     print_clean_banner()
     print_minimal_banner()
-    print("💡 '끝'을 입력하면 대화가 종료됩니다.\n")
-
-    config = config_loader.load_config_simple()
+    print("💡 '끝'을 입력하면 대화가 종료됩니다.\n"
 
     # MCP 서버 시작
     mcp.load_config()
     await mcp.start_all_servers()
     console = Console()
-
+    config = config_loader.load_config_simple()
     all_tools = []
     for server_name in mcp.server_configs:
         if server_name not in getattr(mcp, "sessions", {}):
