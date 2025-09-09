@@ -31,9 +31,6 @@ include = [
   "src/config/mcp_config.json"
 ]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src"]
-
 [tool.hatch.build.targets.sdist]
 include = [
   "main.py",
