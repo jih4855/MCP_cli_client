@@ -5,9 +5,9 @@
       "args": ["-y", "@tosspayments/integration-guide-mcp@latest"]
     },
     "time-tools": {
-      "command": "/Users/jeong-inhyo/typer_cli/.venv/bin/python",
-      "args": ["/Users/jeong-inhyo/typer_cli/time_MCP.py"],
-      "description": "시간 및 파일 관리 도구"
+      "command": "python",
+      "args": ["mcp_server/MCP_official.py"],
+      "description": "시간 및 시스템 정보 도구"
     }
   }
 }
