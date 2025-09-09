@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP CLI Client - Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>MCP CLI Client</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#installation" class="nav-link">Installation</a>
+                <a href="#usage" class="nav-link">Usage</a>
+                <a href="index.html" class="nav-link">한국어</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">MCP CLI Client</h1>
+                    <p class="hero-subtitle">Multi-LLM CLI client for leveraging MCP (Model Context Protocol) servers in terminal environments</p>
+                    <div class="hero-buttons">
+                        <a href="#installation" class="btn btn-primary">Quick Start</a>
+                        <a href="https://github.com/your-repo/typer_cli" class="btn btn-secondary">GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-demo">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">Terminal</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">$</span>
+                                <span class="command">mcp-client</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">MCP CLI Client started</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">user:</span>
+                                <span class="command">Show me current time and system info</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">Tool call: get_current_time</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">Tool call: get_ubuntu_system_info</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="assistant">assistant: Current time is Jan 8, 2025, and running on Ubuntu 22.04 system.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="section">
+            <div class="container">
+                <h2 class="section-title">Project Purpose</h2>
+                <p class="section-text">Provides CLI-based AI assistant that can utilize various tools by integrating with MCP servers in Linux/Unix environments.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">AI</div>
+                        <h3>Multi-LLM Support</h3>
+                        <p>Support for multiple LLM providers: Gemini, Ollama, OpenAI</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">MCP</div>
+                        <h3>MCP Server Integration</h3>
+                        <p>Parallel connection and tool execution with multiple MCP servers</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">DB</div>
+                        <h3>Conversation Management</h3>
+                        <p>SQLite-based session conversation storage</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">FAST</div>
+                        <h3>Async Processing</h3>
+                        <p>Parallel tool execution for fast responses</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="status" class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title">Support Status</h2>
+                <div class="status-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>LLM Provider</th>
+                                <th>Status</th>
+                                <th>Tool Calling</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gemini</td>
+                                <td><span class="status-complete">✓ Complete</span></td>
+                                <td><span class="status-complete">✓ Supported</span></td>
+                                <td>Multi-tool parallel execution</td>
+                            </tr>
+                            <tr>
+                                <td>Ollama</td>
+                                <td><span class="status-development">⚠ In Development</span></td>
+                                <td><span class="status-pending">⏳ Pending</span></td>
+                                <td>Basic chat only</td>
+                            </tr>
+                            <tr>
+                                <td>OpenAI</td>
+                                <td><span class="status-development">⚠ In Development</span></td>
+                                <td><span class="status-pending">⏳ Pending</span></td>
+                                <td>Basic chat only</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation" class="section">
+            <div class="container">
+                <h2 class="section-title">Quick Start</h2>
+                
+                <div class="install-options">
+                    <div class="install-card active" data-method="global">
+                        <h3>Global Install (Recommended)</h3>
+                        <p>Use mcp-client command anywhere</p>
+                    </div>
+                    <div class="install-card" data-method="dev">
+                        <h3>Development Mode</h3>
+                        <p>For code modification and development</p>
+                    </div>
+                    <div class="install-card" data-method="pipx">
+                        <h3>pipx Install</h3>
+                        <p>Isolated environment + global command</p>
+                    </div>
+                </div>
+
+                <div class="install-content">
+                    <div class="install-method active" id="global-install">
+                        <div class="config-card">
+                            <h3>Clone Repository</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Copy the project to your local machine.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">git clone &lt;repository-url&gt;</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">cd typer_cli</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Setup Virtual Environment and Install</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Create virtual environment and install as global command.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">python -m venv venv</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">source venv/bin/activate</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install -r requirements.txt</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install -e .</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Run Anywhere</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Now you can use the mcp-client command anywhere.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="output">No virtual environment activation needed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="install-method" id="dev-install">
+                        <div class="config-card">
+                            <h3>Clone Repository and Setup Virtual Environment</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Setup project for development purposes.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">git clone &lt;repository-url&gt;</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">cd typer_cli</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">python -m venv venv</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">source venv/bin/activate</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Install Dependencies</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Install required packages.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install -r requirements.txt</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Run in Development Mode</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Run after activating the virtual environment.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">python main.py</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="output">Virtual environment activation required</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="install-method" id="pipx-install">
+                        <div class="config-card">
+                            <h3>Install pipx</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">First install pipx.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install pipx</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Install Project</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Install project in isolated environment.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx install .</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Run in Isolated Environment</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Execute the pipx-installed command.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="output">Running in isolated environment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="configuration" class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title">Configuration</h2>
+                <div class="config-card">
+                    <h3>Environment Variables (.env)</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">Configure your Gemini API key.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">.env</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="command">api_key=your_gemini_api_key_here</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">LLM Configuration (config.yaml)</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">Set up LLM model and system prompt.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">config.yaml</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="command">system_prompt: |</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">  You are a helpful AI assistant.</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">  </span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">model: gemini-2.5-flash</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">provider: gemini</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">api_base: None</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">max_context: 20</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">session_id: "default"</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">MCP Server Configuration (mcp_config.json)</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">Configure MCP servers to use.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">mcp_config.json</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="command">{</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">  "mcpServers": {</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">    "ubuntu-info": {</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">      "command": "python",</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">      "args": ["mcp_server/MCP_official.py"]</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">    },</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">    "filesystem": {</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">      "command": "npx",</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">      "args": ["-y", "@modelcontextprotocol/server-filesystem@latest", "/home"]</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">    }</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">  }</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="section">
+            <div class="container">
+                <h2 class="section-title">Usage</h2>
+                <div class="config-card">
+                    <h3>Basic Conversation</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">Start a simple conversation. Type "끝" to exit.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">Terminal</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">user:</span>
+                                <span class="command">Hello!</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="assistant">assistant: Hello! How can I help you?</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">user:</span>
+                                <span class="command">끝</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">Conversation ended</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Tool Usage</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">MCP server tools are automatically executed in parallel.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">Terminal</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">user:</span>
+                                <span class="command">Show me current time and system information</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">Tool call: get_current_time</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">Tool call: get_ubuntu_system_info</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">Tool execution completed</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="assistant">assistant: Current time is Jan 8, 2025, and running on Ubuntu 22.04 system.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title">Architecture</h2>
+                <div class="arch-content">
+                    <div class="arch-diagram">
+                        <div class="arch-box">
+                            <h4>LLM Class</h4>
+                            <p>Multi-provider abstraction</p>
+                        </div>
+                        <div class="arch-arrow">→</div>
+                        <div class="arch-box">
+                            <h4>MCPmanager</h4>
+                            <p>MCP server connection and tool execution management</p>
+                        </div>
+                        <div class="arch-arrow">→</div>
+                        <div class="arch-box">
+                            <h4>MemoryManager</h4>
+                            <p>SQLite conversation storage</p>
+                        </div>
+                    </div>
+                    <div class="arch-flow">
+                        <h4>Async Processing Flow</h4>
+                        <ol>
+                            <li>Parallel connection with MCP servers</li>
+                            <li>Collect available tools list</li>
+                            <li>LLM decides tool invocation</li>
+                            <li>Execute required tools in parallel</li>
+                            <li>Integrate results for final response</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://modelcontextprotocol.io/">MCP Official Documentation</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol">Anthropic MCP Guide</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol/servers">MCP Server List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Status</h4>
+                    <p>Currently supports Gemini with full multi-tool parallel execution.</p>
+                    <p>Ollama and OpenAI tool calling will be completed in future updates.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MCP CLI Client. Open source project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

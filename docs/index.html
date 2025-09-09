@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP CLI Client - 문서</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>MCP CLI Client</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="#overview" class="nav-link">개요</a>
+                <a href="#installation" class="nav-link">설치</a>
+                <a href="#usage" class="nav-link">사용법</a>
+                <a href="index-en.html" class="nav-link">English</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">MCP CLI Client</h1>
+                    <p class="hero-subtitle">CLI 환경에서 MCP(Model Context Protocol) server를 활용할 수 있는 다중 LLM 지원 client</p>
+                    <div class="hero-buttons">
+                        <a href="#installation" class="btn btn-primary">빠른 시작</a>
+                        <a href="https://github.com/your-repo/typer_cli" class="btn btn-secondary">GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-demo">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">Terminal</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">$</span>
+                                <span class="command">mcp-client</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">MCP CLI Client 시작</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">user:</span>
+                                <span class="command">현재 시간과 시스템 정보 알려줘</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">도구 호출: get_current_time</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">도구 호출: get_ubuntu_system_info</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="assistant">assistant: 현재 시간은 2025년 1월 8일이고, Ubuntu 22.04 시스템에서 실행 중입니다.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="section">
+            <div class="container">
+                <h2 class="section-title">프로젝트 목적</h2>
+                <p class="section-text">Linux/Unix 환경에서 MCP server와 연동하여 다양한 도구를 활용할 수 있는 CLI 기반 AI assistant를 제공합니다.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">AI</div>
+                        <h3>다중 LLM 지원</h3>
+                        <p>Gemini, Ollama, OpenAI 등 여러 LLM 프로바이더 지원</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">MCP</div>
+                        <h3>MCP 서버 연동</h3>
+                        <p>여러 MCP 서버와 병렬 연결 및 도구 실행</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">DB</div>
+                        <h3>대화 기록 관리</h3>
+                        <p>SQLite 기반 세션별 대화 저장</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">FAST</div>
+                        <h3>비동기 처리</h3>
+                        <p>빠른 응답을 위한 병렬 도구 실행</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="status" class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title">📋 지원 상태</h2>
+                <div class="status-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>LLM Provider</th>
+                                <th>상태</th>
+                                <th>도구 호출</th>
+                                <th>비고</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gemini</td>
+                                <td><span class="status-complete">✅ 완료</span></td>
+                                <td><span class="status-complete">✅ 지원</span></td>
+                                <td>다중 도구 병렬 실행</td>
+                            </tr>
+                            <tr>
+                                <td>Ollama</td>
+                                <td><span class="status-development">🚧 개발중</span></td>
+                                <td><span class="status-pending">⏳ 준비중</span></td>
+                                <td>기본 채팅만</td>
+                            </tr>
+                            <tr>
+                                <td>OpenAI</td>
+                                <td><span class="status-development">🚧 개발중</span></td>
+                                <td><span class="status-pending">⏳ 준비중</span></td>
+                                <td>기본 채팅만</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation" class="section">
+            <div class="container">
+                <h2 class="section-title">🚀 빠른 시작</h2>
+                
+                <div class="install-options">
+                    <div class="install-card active" data-method="global">
+                        <h3>글로벌 설치 (권장)</h3>
+                        <p>어디서든 mcp-client 명령어 사용</p>
+                    </div>
+                    <div class="install-card" data-method="dev">
+                        <h3>개발 모드</h3>
+                        <p>코드 수정 및 개발용</p>
+                    </div>
+                    <div class="install-card" data-method="pipx">
+                        <h3>pipx 설치</h3>
+                        <p>격리된 환경 + 글로벌 명령어</p>
+                    </div>
+                </div>
+
+                <div class="install-content">
+                    <div class="install-method active" id="global-install">
+                        <div class="config-card">
+                            <h3>저장소 클론</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">프로젝트를 로컬에 복사합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">git clone &lt;repository-url&gt;</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">cd typer_cli</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">가상환경 설정 및 설치</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">가상환경을 생성하고 패키지를 글로벌 명령어로 설치합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">python -m venv venv</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">source venv/bin/activate</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install -r requirements.txt</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install -e .</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">어디서든 실행</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">이제 어디서든 mcp-client 명령어를 사용할 수 있습니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="output">가상환경 활성화 없이 실행 가능</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="install-method" id="dev-install">
+                        <div class="config-card">
+                            <h3>저장소 클론 및 가상환경</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">개발용으로 프로젝트를 설정합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">git clone &lt;repository-url&gt;</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">cd typer_cli</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">python -m venv venv</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">source venv/bin/activate</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">의존성 설치</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">필요한 패키지들을 설치합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install -r requirements.txt</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">개발 모드 실행</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">가상환경을 활성화한 후 실행합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">python main.py</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="output">가상환경 활성화 필요</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="install-method" id="pipx-install">
+                        <div class="config-card">
+                            <h3>pipx 설치</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">pipx를 먼저 설치합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install pipx</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">프로젝트 설치</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">격리된 환경에 프로젝트를 설치합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx install .</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">격리된 환경에서 실행</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">pipx로 설치된 명령어를 실행합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="output">격리된 환경에서 실행</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="configuration" class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title">설정</h2>
+                <div class="config-card">
+                    <h3>환경변수 (.env)</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">Gemini API 키를 설정합니다.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">.env</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="command">api_key=your_gemini_api_key_here</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">LLM 설정 (config.yaml)</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">LLM 모델과 시스템 프롬프트를 설정합니다.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">config.yaml</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="command">system_prompt: |</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">  당신은 도움이 되는 AI assistant입니다.</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">  </span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">model: gemini-2.5-flash</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">provider: gemini</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">api_base: None</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">max_context: 20</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">session_id: "default"</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">MCP 서버 설정 (mcp_config.json)</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">사용할 MCP 서버들을 설정합니다.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">mcp_config.json</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="command">{</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">  "mcpServers": {</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">    "ubuntu-info": {</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">      "command": "python",</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">      "args": ["mcp_server/MCP_official.py"]</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">    },</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">    "filesystem": {</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">      "command": "npx",</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">      "args": ["-y", "@modelcontextprotocol/server-filesystem@latest", "/home"]</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">    }</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">  }</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="command">}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="section">
+            <div class="container">
+                <h2 class="section-title">📖 사용법</h2>
+                <div class="config-card">
+                    <h3>기본 대화</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">간단한 대화를 나눠보세요. "끝"이라고 입력하면 종료됩니다.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">Terminal</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">user:</span>
+                                <span class="command">안녕하세요!</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="assistant">assistant: 안녕하세요! 무엇을 도와드릴까요?</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">user:</span>
+                                <span class="command">끝</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">대화 종료</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">도구 사용</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">MCP 서버의 도구들을 자동으로 병렬 실행합니다.</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-title">Terminal</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">user:</span>
+                                <span class="command">현재 시간과 시스템 정보를 알려주세요</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">도구 호출: get_current_time</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">도구 호출: get_ubuntu_system_info</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="output">도구 실행 완료</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="assistant">assistant: 현재 시간은 2025년 1월 8일이고, Ubuntu 22.04 시스템에서 실행 중입니다.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title">🏗️ Architecture</h2>
+                <div class="arch-content">
+                    <div class="arch-diagram">
+                        <div class="arch-box">
+                            <h4>LLM Class</h4>
+                            <p>다중 provider 추상화</p>
+                        </div>
+                        <div class="arch-arrow">→</div>
+                        <div class="arch-box">
+                            <h4>MCPmanager</h4>
+                            <p>MCP server 연결 및 도구 실행 관리</p>
+                        </div>
+                        <div class="arch-arrow">→</div>
+                        <div class="arch-box">
+                            <h4>MemoryManager</h4>
+                            <p>대화 기록 SQLite 저장</p>
+                        </div>
+                    </div>
+                    <div class="arch-flow">
+                        <h4>비동기 처리 흐름</h4>
+                        <ol>
+                            <li>MCP server들과 병렬 연결</li>
+                            <li>사용 가능한 도구 목록 수집</li>
+                            <li>LLM이 도구 호출 결정</li>
+                            <li>필요한 도구들을 병렬 실행</li>
+                            <li>결과를 통합하여 최종 응답 생성</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://modelcontextprotocol.io/">MCP 공식 문서</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol">Anthropic MCP 가이드</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol/servers">MCP 서버 목록</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Status</h4>
+                    <p>⭐ 현재 Gemini만 완전 지원하며, 다중 도구 병렬 실행이 가능합니다.</p>
+                    <p>🚧 추후 업데이트에서 Ollama, OpenAI 도구 호출도 완성될 예정입니다.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MCP CLI Client. 오픈소스 프로젝트입니다.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
