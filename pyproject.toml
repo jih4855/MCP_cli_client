@@ -16,9 +16,8 @@ dependencies = [
 [project.scripts]
 mcp-client = "main:main"
 
-[tool.hatch.build.targets.wheel]
-packages = ["src"]
-py-modules = ["main", "ascii_banner"]
+[tool.hatch.build]
+include = ["main.py", "ascii_banner.py", "src/"]
 
 [build-system]
 requires = ["hatchling"]
