@@ -91,6 +91,11 @@
                         <h3>Async Processing</h3>
                         <p>Parallel tool execution for fast responses</p>
                     </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">CLI</div>
+                        <h3>Enhanced CLI</h3>
+                        <p>Rich styling + readline history</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -407,11 +412,11 @@
                         </div>
                     </div>
 
-                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">MCP Server Configuration (mcp_config.json)</h3>
-                    <p style="color: #94a3b8; margin-bottom: 1rem;">Configure MCP servers to use.</p>
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">MCP Server Configuration (src/config/mcp_config.json)</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">Configure MCP servers to use. <strong>Absolute path recommended</strong></p>
                     <div class="terminal">
                         <div class="terminal-header">
-                            <span class="terminal-title">mcp_config.json</span>
+                            <span class="terminal-title">src/config/mcp_config.json</span>
                         </div>
                         <div class="terminal-body">
                             <div class="terminal-line">
@@ -421,13 +426,13 @@
                                 <span class="command">  "mcpServers": {</span>
                             </div>
                             <div class="terminal-line">
-                                <span class="command">    "ubuntu-info": {</span>
+                                <span class="command">    "ubuntu-info-server": {</span>
                             </div>
                             <div class="terminal-line">
                                 <span class="command">      "command": "python",</span>
                             </div>
                             <div class="terminal-line">
-                                <span class="command">      "args": ["mcp_server/MCP_official.py"]</span>
+                                <span class="command">      "args": ["/absolute/path/to/typer_cli/mcp_server/MCP_official.py"]</span>
                             </div>
                             <div class="terminal-line">
                                 <span class="command">    },</span>
@@ -479,7 +484,7 @@
                                 <span class="command">끝</span>
                             </div>
                             <div class="terminal-line">
-                                <span class="output">Conversation ended</span>
+                                <span class="assistant">assistant: Conversation ended</span>
                             </div>
                         </div>
                     </div>
