@@ -58,8 +58,8 @@ pipx install git+https://github.com/jih4855/MCP_cli_client.git
 # MCP 서버 파일 준비 (중요!)
 git clone https://github.com/jih4855/MCP_cli_client.git ~/mcp-project
 
-# 설정 파일 생성
-cat > ~/config.yaml << 'EOF'
+# 설정 파일 복사 및 생성
+cp ~/mcp-project/src/config/config.yaml ~/config.yaml 2>/dev/null || cat > ~/config.yaml << 'EOF'
 system_prompt: |
   당신은 도움이 되는 AI assistant입니다.
   
@@ -193,8 +193,8 @@ session_id: "default"
 # 1. 프로젝트 클론 (MCP 서버 파일용)  
 git clone https://github.com/jih4855/MCP_cli_client.git ~/mcp-project
 
-# 2. 설정 파일들 생성 및 수정
-cat > ~/config.yaml << 'EOF'
+# 2. 설정 파일들 복사 및 생성  
+cp ~/mcp-project/src/config/config.yaml ~/config.yaml 2>/dev/null || cat > ~/config.yaml << 'EOF'
 system_prompt: |
   당신은 도움이 되는 AI assistant입니다.
   
