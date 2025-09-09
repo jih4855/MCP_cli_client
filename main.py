@@ -9,6 +9,9 @@ from dotenv import load_dotenv
 import os
 from importlib import resources  # <= 단일 import
 from src.load_config import Configloader
+from rich.prompt import Prompt
+from rich.console import Console
+import readline
 
 load_dotenv()
 Memory = MemoryManager()
@@ -27,6 +30,7 @@ async def chat():
     # MCP 서버 시작
     mcp.load_config()
     await mcp.start_all_servers()
+    console = Console()
 
     all_tools = []
     for server_name in mcp.server_configs:
@@ -56,14 +60,15 @@ async def chat():
     )
     print(f"🧠 LLM 초기화 완료: {llm_instance.model} ({llm_instance.provider})")
 
+    
     try:
         while True:
-            user_input = input("user: ").strip()
+            user_input = Prompt.ask("[bold green]user[/bold green]").strip()
             if user_input == "끝":
-                print("대화 종료")
+                console.print("대화 종료")
                 break
             response = await llm_instance.check_provider(user_input, all_tools)
-            print(f"assistant: {response}\n")
+            console.print(f"[bold blue]assistant[/bold blue]: {response}")
     finally:
         try:
             await mcp.stop_all_servers()

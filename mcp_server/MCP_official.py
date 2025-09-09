@@ -9,7 +9,7 @@ import mcp.types as types
 from mcp.server import NotificationOptions, Server
 import mcp.server.stdio
 
-server = Server("ubuntu-info-server")
+server = Server("ubuntu-info-server") ##예제 서버
 
 # 안전한 Ubuntu 명령어 화이트리스트
 SAFE_UBUNTU_COMMANDS = {

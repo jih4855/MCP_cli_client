@@ -28,6 +28,7 @@ Ubuntu/Linux 환경에서 MCP server와 연동하여 다양한 시스템 도구�
 - 💾 **대화 기록 관리**: SQLite 기반 session별 대화 저장
 - ⚡ **비동기 처리**: 빠른 응답을 위한 병렬 도구 실행
 - 🛠️ **확장 가능한 구조**: 새로운 LLM provider 및 MCP server 쉽게 추가
+- 🎨 **개선된 CLI**: Rich 스타일링 + readline 히스토리
 
 ## 📋 지원 상태
 
@@ -125,18 +126,20 @@ max_context: 20
 session_id: "default"
 ```
 
-3. **MCP server 설정** (`mcp_config.json`)
+3. **MCP server 설정** (`src/config/mcp_config.json`)
 ```json
 {
   "mcpServers": {
-    "your-server-name": {
+    "ubuntu-info-server": {
       "command": "python",
-      "args": ["/path/to/your/mcp_server.py"],
-      "description": "server 설명"
+      "args": ["/absolute/path/to/typer_cli/mcp_server/MCP_official.py"],
+      "description": "시간 및 시스템 정보 도구"
     }
   }
 }
 ```
+
+**경로 설정**: 절대경로 사용 권장
 
 ### 실행
 
@@ -179,6 +182,8 @@ user: 끝
 typer_cli/
 ├── main.py                 # CLI 진입점
 ├── src/
+│   ├── config/
+│   │   └── mcp_config.json # MCP server 설정
 │   ├── load_llm.py         # LLM provider 관리 (Gemini, Ollama, OpenAI)
 │   ├── mcp_manager.py      # MCP server 연결 및 도구 실행
 │   └── memory.py           # SQLite 기반 대화 기록 관리

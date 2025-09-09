@@ -4,9 +4,9 @@
       "command": "npx",
       "args": ["-y", "@tosspayments/integration-guide-mcp@latest"]
     },
-    "time-tools": {
+    "ubuntu-info-server": {
       "command": "python",
-      "args": ["mcp_server/MCP_official.py"],
+      "args": ["/users/jeong-inhyo/typer_cli/mcp_server/MCP_official.py"],
       "description": "시간 및 시스템 정보 도구"
     }
   }

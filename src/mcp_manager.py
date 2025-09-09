@@ -94,12 +94,6 @@ class MCPmanager:
                 self.failed_servers[name] = str(e)
                 print(f"[MCP][ERROR] 서버 시작 실패: {name} -> {e}")
 
-    async def get_available_tools(self, server_name):
-        session = self.sessions.get(server_name)
-        if not session:
-            raise RuntimeError(f"[MCP] 세션 없음: {server_name} (실패: {self.failed_servers.get(server_name)})")
-        return await session.list_tools()
-
     async def execute_tool(self, server_name, tool_name, params):
         session = self.sessions.get(server_name)
         if not session:
@@ -146,13 +140,7 @@ class MCPmanager:
         if not session:
             raise RuntimeError(f"[MCP] 세션 없음: {server_name} (실패: {self.failed_servers.get(server_name)})")
         return await session.list_tools()
-
-    async def execute_tool(self, server_name, tool_name, params):
-        session = self.sessions.get(server_name)
-        if not session:
-            raise RuntimeError(f"[MCP] 세션 없음: {server_name}")
-        return await session.call_tool(tool_name, params)
-
+    
     async def multi_execute_tool(self, tool_name, params):
         tasks = []
         for server_name in self.sessions:
