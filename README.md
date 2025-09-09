@@ -55,8 +55,20 @@ pipx ensurepath
 # 프로젝트 설치
 pipx install git+https://github.com/jih4855/MCP_cli_client.git
 
+# MCP 서버 파일 준비 (중요!)
+git clone https://github.com/jih4855/MCP_cli_client.git ~/mcp-project
+
 # 어디서든 실행
 mcp-client
+```
+
+**⚡ PATH 문제 해결**:
+```bash
+# 새 터미널 열거나
+source ~/.bashrc
+
+# 또는 직접 실행  
+~/.local/bin/mcp-client
 ```
 
 #### macOS
@@ -139,20 +151,32 @@ max_context: 20
 session_id: "default"
 ```
 
-3. **예제 MCP server 설정** (`src/config/mcp_config.json`)
+3. **MCP server 설정** (`src/config/mcp_config.json`)
 ```json
 {
   "mcpServers": {
     "ubuntu-info-server": {
       "command": "python",
-      "args": ["/absolute/path/to/typer_cli/mcp_server/MCP_official.py"],
+      "args": ["UPDATE_THIS_PATH/mcp_server/MCP_official.py"],
       "description": "시간 및 시스템 정보 도구"
     }
   }
 }
 ```
 
-**경로 설정**: 절대경로 사용 권장
+**⚠️ 경로 설정 필수**: 
+- `ubuntu-info-server`의 `args` 경로를 **실제 서버 경로**로 수정
+- pipx 설치 후 MCP 서버 파일을 서버에 복사 또는 git clone 필요
+
+**빠른 설정 예시**:
+```bash
+# 1. 프로젝트 클론 (MCP 서버 파일용)  
+git clone https://github.com/jih4855/MCP_cli_client.git ~/mcp-project
+
+# 2. 설정 파일 수정 (src/config/mcp_config.json)
+# "UPDATE_THIS_PATH"를 실제 경로로 변경:
+# "args": ["/home/username/mcp-project/mcp_server/MCP_official.py"]
+```
 
 ### 실행
 
@@ -224,7 +248,7 @@ typer_cli/
   "mcpServers": {
     "ubuntu-info-server": {
       "command": "python",
-      "args": ["/absolute/path/to/typer_cli/mcp_server/MCP_official.py"],
+      "args": ["UPDATE_THIS_PATH/mcp_server/MCP_official.py"],
       "description": "Ubuntu 시스템 정보 조회"
     },
     "filesystem": {
