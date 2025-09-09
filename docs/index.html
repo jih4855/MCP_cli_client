@@ -158,13 +158,13 @@
                 </div>
 
                 <div class="install-content">
-                    <div class="install-method active" id="global-install">
+                    <div class="install-method" id="global-install">
                         <div class="config-card">
-                            <h3>글로벌 설치 (권장)</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Ubuntu/Linux 환경에서 권장하는 설치 방법입니다.</p>
+                            <h3>글로벌 설치 (macOS만 권장)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">macOS에서만 안정적으로 작동하는 방법입니다.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
+                                    <span class="terminal-title">macOS Terminal</span>
                                 </div>
                                 <div class="terminal-body">
                                     <div class="terminal-line">
@@ -173,7 +173,7 @@
                                     </div>
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">cd MCP_cli_client</span>
+                                        <span class="command">cd MCP_cli_client && python -m venv venv</span>
                                     </div>
                                 </div>
                             </div>
@@ -223,7 +223,7 @@
                         </div>
                     </div>
 
-                    <div class="install-method" id="pipx-install">
+                    <div class="install-method active" id="pipx-install">
                         <div class="config-card">
                             <h3>pipx 설치</h3>
                             <p style="color: #94a3b8; margin-bottom: 1rem;">Ubuntu/Linux 환경에서 격리된 환경으로 설치하는 방법입니다.</p>
