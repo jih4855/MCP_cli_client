@@ -51,4 +51,6 @@ class Configloader:
                         return data
                     except Exception as e:
                         print(f"⚠️ 로컬 config 읽기 실패 {p}: {e}")
-
+                return data
+        print("⚠️ config 없음 (기본값 사용)")
+        return {}
