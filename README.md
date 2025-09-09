@@ -23,7 +23,7 @@ Ubuntu/Linux 환경에서 MCP server와 연동하여 다양한 시스템 도구�
 ## ✨ 주요 기능
 
 - 🤖 **다중 LLM 지원**: Gemini (완전 지원), Ollama, OpenAI (기본 지원)
-- 🔗 **MCP server 연동**: 여러 MCP server와 병렬 연결 및 도구 실행
+- 🔗 **MCP server 연동**: 여러 MCP server와 병렬 연결 및 도구 실행(시스템 점검 예시 mcp 서버 구현)
 - 🐧 **Ubuntu 시스템 도구**: 시스템 정보, 메모리, CPU, 네트워크 모니터링
 - 💾 **대화 기록 관리**: SQLite 기반 session별 대화 저장
 - ⚡ **비동기 처리**: 빠른 응답을 위한 병렬 도구 실행
@@ -72,6 +72,42 @@ mcp-client --help
 pipx reinstall mcp-cli-client
 ```
 
+#### 🔐 (pipx 전용) API 키 빠른 설정
+`pipx`로 설치하면 패키지 가상환경 경로를 알 필요 없이 아래 중 한 방법으로 키만 등록하면 됩니다.
+
+1) 전용 설정 디렉토리(권장)
+```bash
+mkdir -p ~/.config/mcp-client
+cat > ~/.config/mcp-client/.env <<'EOF'
+GOOGLE_API_KEY=발급한_gemini_api_key
+# OPENAI_API_KEY=옵션_openai_key
+EOF
+```
+
+2) 현재 셸 세션 한 번만 (종료되면 사라짐)
+```bash
+export GOOGLE_API_KEY=발급한_gemini_api_key
+```
+
+3) 영구 반영 (zshrc)
+```bash
+echo 'export GOOGLE_API_KEY=발급한_gemini_api_key' >> ~/.zshrc
+source ~/.zshrc
+```
+
+4) 실행 디렉토리에 직접
+```bash
+echo 'GOOGLE_API_KEY=발급한_gemini_api_key' > .env
+mcp-client
+```
+
+확인:
+```bash
+env | grep GOOGLE_API_KEY
+```
+
+> 코드에서 실제로 탐색하는 순서: (1) 현재 실행 디렉토리 `.env` → (2) `~/.config/mcp-client/.env` → (3) `~/.mcp-client/.env` → (4) config.yaml 내 `api_key` 항목.
+
 ### 4) 개발 모드 (직접 main 실행)
 
 1. **저장소 클론 및 가상환경**
@@ -96,7 +132,7 @@ python main.py  # 가상환경 활성화 필요
 
 1. **환경변수 설정** (`.env` 파일 생성)
 ```env
-api_key=your_gemini_api_key_here
+GOOGLE_API_KEY=your_gemini_api_key_here
 ```
 
 2. **LLM 설정** (`config.yaml`)
@@ -134,8 +170,14 @@ session_id: "default"
 3. 현재 작업 디렉토리: ./config.yaml (또는 mcp-client.yaml 등 지원 패턴)
 4. 패키지 내 기본값 (읽기 전용)
 
-환경변수 API 키 우선순위:
-GEMINI_API_KEY > OPENAI_API_KEY > OLLAMA_API_KEY > api_key (config 파일)
+환경변수 API 키 우선순위(실제 구현 기준):
+GOOGLE_API_KEY > OPENAI_API_KEY > api_key(config)  
+*Ollama는 로컬 모델이므로 별도 키 불필요*
+
+추가로 `.env` 여러 위치 지원:
+1) 현재 실행 디렉토리
+2) `~/.config/mcp-client/.env`
+3) `~/.mcp-client/.env`
 
 ### 실행
 

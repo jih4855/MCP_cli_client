@@ -143,25 +143,29 @@
                 <h2 class="section-title">Quick Start</h2>
                 
                 <div class="install-options">
-                    <div class="install-card active" data-method="pipx">
-                        <h3>pipx Install (Recommended)</h3>
-                        <p>Isolated environment + stable on all servers</p>
+                    <div class="install-card active" data-method="editable">
+                        <h3>Editable Dev Install</h3>
+                        <p>Code changes immediately reflected</p>
                     </div>
-                    <div class="install-card" data-method="global">
-                        <h3>Global Install</h3>
-                        <p>Recommended only for macOS</p>
+                    <div class="install-card" data-method="build">
+                        <h3>Regular Install</h3>
+                        <p>Test deployment form</p>
+                    </div>
+                    <div class="install-card" data-method="pipx">
+                        <h3>pipx Install (Recommended)</h3>
+                        <p>Isolated + global execution</p>
                     </div>
                     <div class="install-card" data-method="dev">
                         <h3>Development Mode</h3>
-                        <p>For code modification and development</p>
+                        <p>Direct main execution</p>
                     </div>
                 </div>
 
                 <div class="install-content">
-                    <div class="install-method active" id="global-install">
+                    <div class="install-method active" id="editable-install">
                         <div class="config-card">
-                            <h3>Global Install (Recommended)</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Recommended installation method for Ubuntu/Linux environments.</p>
+                            <h3>Editable Dev Install (Local Changes Reflected)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Development installation where code changes are immediately reflected.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -231,10 +235,10 @@
                         </div>
                     </div>
 
-                    <div class="install-method" id="global-install">
+                    <div class="install-method" id="build-install">
                         <div class="config-card">
-                            <h3>Clone Repository</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Copy the project to your local machine.</p>
+                            <h3>Regular Install (Deployment Form Test)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Test in an environment identical to the actual deployment form.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -298,8 +302,8 @@
 
                     <div class="install-method" id="dev-install">
                         <div class="config-card">
-                            <h3>Clone Repository and Setup Virtual Environment</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Setup project for development purposes.</p>
+                            <h3>Development Mode (Direct main execution)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Test directly with minimal setup barrier.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>

@@ -143,28 +143,32 @@
                 <h2 class="section-title">🚀 빠른 시작</h2>
                 
                 <div class="install-options">
-                    <div class="install-card active" data-method="pipx">
-                        <h3>pipx 설치 (권장)</h3>
-                        <p>격리된 환경 + 모든 서버에서 안정적</p>
+                    <div class="install-card active" data-method="editable">
+                        <h3>Editable 개발 설치</h3>
+                        <p>코드 수정 즉시 반영</p>
                     </div>
-                    <div class="install-card" data-method="global">
-                        <h3>글로벌 설치</h3>
-                        <p>macOS에서만 권장</p>
+                    <div class="install-card" data-method="build">
+                        <h3>일반 설치</h3>
+                        <p>배포 형태 테스트</p>
+                    </div>
+                    <div class="install-card" data-method="pipx">
+                        <h3>pipx 설치 (권장)</h3>
+                        <p>격리 + 전역 실행</p>
                     </div>
                     <div class="install-card" data-method="dev">
                         <h3>개발 모드</h3>
-                        <p>코드 수정 및 개발용</p>
+                        <p>직접 main 실행</p>
                     </div>
                 </div>
 
                 <div class="install-content">
-                    <div class="install-method" id="global-install">
+                    <div class="install-method active" id="editable-install">
                         <div class="config-card">
-                            <h3>글로벌 설치 (macOS만 권장)</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">macOS에서만 안정적으로 작동하는 방법입니다.</p>
+                            <h3>Editable 개발 설치 (로컬 수정 반영)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">코드 수정이 즉시 반영되는 개발용 설치 방법입니다.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
-                                    <span class="terminal-title">macOS Terminal</span>
+                                    <span class="terminal-title">Terminal</span>
                                 </div>
                                 <div class="terminal-body">
                                     <div class="terminal-line">
@@ -173,18 +177,8 @@
                                     </div>
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">cd MCP_cli_client && python -m venv venv</span>
+                                        <span class="command">cd MCP_cli_client</span>
                                     </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">가상환경 설정 및 설치</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">가상환경을 생성하고 패키지를 글로벌 명령어로 설치합니다.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
                                         <span class="command">python -m venv venv</span>
@@ -192,10 +186,6 @@
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
                                         <span class="command">source venv/bin/activate</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pip install -r requirements.txt</span>
                                     </div>
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
@@ -204,8 +194,8 @@
                                 </div>
                             </div>
 
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">어디서든 실행</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">이제 어디서든 mcp-client 명령어를 사용할 수 있습니다.</p>
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">실행</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">pyproject.toml의 dependencies가 자동 설치되어 바로 실행 가능합니다.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -214,19 +204,16 @@
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
                                         <span class="command">mcp-client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="output">가상환경 활성화 없이 실행 가능</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="install-method active" id="pipx-install">
+                    <div class="install-method" id="build-install">
                         <div class="config-card">
-                            <h3>pipx 설치</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Ubuntu/Linux 환경에서 격리된 환경으로 설치하는 방법입니다.</p>
+                            <h3>일반(비편집) 설치 (배포 형태 테스트)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">실제 배포 형태와 동일한 환경에서 테스트하는 방법입니다.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -234,17 +221,49 @@
                                 <div class="terminal-body">
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">sudo apt update && sudo apt install pipx</span>
+                                        <span class="comment"># build 미설치 시: pip install build</span>
                                     </div>
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">pipx ensurepath && source ~/.bashrc</span>
+                                        <span class="command">python -m build</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pip install dist/*.whl</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client --help</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="install-method" id="pipx-install">
+                        <div class="config-card">
+                            <h3>pipx 설치 (권장: 격리 + 전역 실행)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">모든 환경에서 안정적이고 격리된 설치 방법입니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx install git+https://github.com/jih4855/MCP_cli_client.git</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client --help</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">프로젝트 설치</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Git에서 직접 설치하고 시스템 라이브러리를 추가로 설치합니다.</p>
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔐 API 키 빠른 설정</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">4가지 방법 중 하나를 선택하세요:</p>
+                            
+                            <h4 style="color: #e2e8f0; margin: 1rem 0 0.5rem;">1) 전용 설정 디렉토리 (권장)</h4>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -252,21 +271,16 @@
                                 <div class="terminal-body">
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">git clone https://github.com/jih4855/MCP_cli_client.git</span>
+                                        <span class="command">mkdir -p ~/.config/mcp-client</span>
                                     </div>
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">cd MCP_cli_client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pipx install . && pip3 install -r requirements.txt</span>
+                                        <span class="command">echo 'GOOGLE_API_KEY=발급한_gemini_api_key' > ~/.config/mcp-client/.env</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">실행</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">격리된 환경에서 실행됩니다.</p>
+                            <h4 style="color: #e2e8f0; margin: 1rem 0 0.5rem;">2) 영구 반영 (zshrc)</h4>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -274,10 +288,11 @@
                                 <div class="terminal-body">
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
-                                        <span class="command">mcp-client</span>
+                                        <span class="command">echo 'export GOOGLE_API_KEY=발급한_gemini_api_key' >> ~/.zshrc</span>
                                     </div>
                                     <div class="terminal-line">
-                                        <span class="output">격리된 환경에서 실행</span>
+                                        <span class="prompt">$</span>
+                                        <span class="command">source ~/.zshrc</span>
                                     </div>
                                 </div>
                             </div>
@@ -286,8 +301,8 @@
 
                     <div class="install-method" id="dev-install">
                         <div class="config-card">
-                            <h3>저장소 클론 및 가상환경</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">개발용으로 프로젝트를 설정합니다.</p>
+                            <h3>개발 모드 (직접 main 실행)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">최소 진입장벽으로 바로 테스트할 수 있는 방법입니다.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -309,16 +324,6 @@
                                         <span class="prompt">$</span>
                                         <span class="command">source venv/bin/activate</span>
                                     </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">의존성 설치</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">필요한 패키지들을 설치합니다.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
                                         <span class="command">pip install -r requirements.txt</span>
@@ -326,8 +331,8 @@
                                 </div>
                             </div>
 
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">개발 모드 실행</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">가상환경을 활성화한 후 실행합니다.</p>
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">직접 실행</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">가상환경 활성화 후 main.py를 직접 실행합니다.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -336,9 +341,6 @@
                                     <div class="terminal-line">
                                         <span class="prompt">$</span>
                                         <span class="command">python main.py</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="output">가상환경 활성화 필요</span>
                                     </div>
                                 </div>
                             </div>
