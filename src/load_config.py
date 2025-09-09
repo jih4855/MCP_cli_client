@@ -22,26 +22,19 @@ class Configloader:
         
         else:
             candidates = [
-                # === 1순위: 환경변수 (기존 유지) ===
-                os.getenv("MCP_CLIENT_CONFIG"),
+            # 1순위: 환경변수
+            os.getenv("MCP_CLIENT_CONFIG"),
 
-                # === 2순위: 사용자 전역 설정 (NEW!) ===
-                # 이 경로들이 핵심! 글로벌 설치 시 주로 여기서 찾게 됨
-                os.path.expanduser("~/.config/mcp-client/config.yaml"),    # XDG 표준 (Linux/macOS)
-                os.path.expanduser("~/.config/mcp-client/config.yml"),
-                os.path.expanduser("~/.mcp-client/config.yaml"),           # dotfile 스타일
-                os.path.expanduser("~/.mcp-client/config.yml"),
-                os.path.expanduser("~/.mcp-client.yaml"),                  # 단일 파일 스타일
-                os.path.expanduser("~/.mcp-client.yml"),
+            # 2순위: XDG 표준 (절대경로)
+            os.path.expanduser("~/.config/mcp-client/config.yaml"),
+            os.path.expanduser("~/.mcp-client/config.yaml"),
 
-                # === 3순위: 프로젝트별 설정 (기존 유지) ===  
-                "./config.yaml",        # 현재 작업 디렉토리
-                "./config.yml",
-                "./mcp-client.yaml",    # 명시적 프로젝트 설정
-                "./mcp-client.yml",
-                "./.mcp-client.yaml",   # 숨김 파일 스타일
-                "./.mcp-client.yml",
-                ]
+            # 3순위: 홈 디렉토리 직접
+            os.path.expanduser("~/config.yaml"),
+
+            # 4순위: 상대경로 (마지막에만)
+            "./config.yaml" if os.getcwd().endswith('typer_cli') else None,
+        ]
             for p in candidates:
                 if p and os.path.isfile(p):
                     try:
