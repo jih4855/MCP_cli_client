@@ -138,13 +138,13 @@
                 <h2 class="section-title">🚀 빠른 시작</h2>
                 
                 <div class="install-options">
-                    <div class="install-card active" data-method="pipx">
-                        <h3>pipx 설치 (권장)</h3>
-                        <p>격리된 환경 + 글로벌 명령어</p>
-                    </div>
-                    <div class="install-card" data-method="global">
-                        <h3>수동 글로벌 설치</h3>
+                    <div class="install-card active" data-method="global">
+                        <h3>글로벌 설치 (권장)</h3>
                         <p>어디서든 mcp-client 명령어 사용</p>
+                    </div>
+                    <div class="install-card" data-method="pipx">
+                        <h3>pipx 설치</h3>
+                        <p>격리된 환경 + 글로벌 명령어</p>
                     </div>
                     <div class="install-card" data-method="dev">
                         <h3>개발 모드</h3>
@@ -153,83 +153,10 @@
                 </div>
 
                 <div class="install-content">
-                    <div class="install-method active" id="pipx-install">
+                    <div class="install-method active" id="global-install">
                         <div class="config-card">
-                            <h3>pipx 설치 (권장)</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Ubuntu/Linux 환경에서 권장하는 안전한 설치 방법입니다.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">sudo apt update && sudo apt install pipx</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pipx ensurepath</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">source ~/.bashrc</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">프로젝트 클론 및 설치</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">프로젝트를 클론하고 pipx로 설치합니다.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">git clone https://github.com/jih4855/MCP_cli_client.git</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">cd MCP_cli_client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pipx install .</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pipx ensurepath</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">source ~/.bashrc</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">어디서든 실행</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">이제 어디서든 mcp-client 명령어를 사용할 수 있습니다.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">mcp-client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="output">격리된 환경에서 안전하게 실행</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="install-method" id="global-install">
-                        <div class="config-card">
-                            <h3>저장소 클론</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">프로젝트를 로컬에 복사합니다.</p>
+                            <h3>글로벌 설치 (권장)</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Ubuntu/Linux 환경에서 권장하는 설치 방법입니다.</p>
                             <div class="terminal">
                                 <div class="terminal-header">
                                     <span class="terminal-title">Terminal</span>
@@ -285,6 +212,67 @@
                                     </div>
                                     <div class="terminal-line">
                                         <span class="output">가상환경 활성화 없이 실행 가능</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="install-method" id="pipx-install">
+                        <div class="config-card">
+                            <h3>pipx 설치</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Ubuntu/Linux 환경에서 격리된 환경으로 설치하는 방법입니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">sudo apt update && sudo apt install pipx</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx ensurepath && source ~/.bashrc</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">프로젝트 설치</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">Git에서 직접 설치하고 시스템 라이브러리를 추가로 설치합니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">git clone https://github.com/jih4855/MCP_cli_client.git</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">cd MCP_cli_client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">pipx install . && pip3 install -r requirements.txt</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">실행</h3>
+                            <p style="color: #94a3b8; margin-bottom: 1rem;">격리된 환경에서 실행됩니다.</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="terminal-line">
+                                        <span class="prompt">$</span>
+                                        <span class="command">mcp-client</span>
+                                    </div>
+                                    <div class="terminal-line">
+                                        <span class="output">격리된 환경에서 실행</span>
                                     </div>
                                 </div>
                             </div>

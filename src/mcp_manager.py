@@ -4,6 +4,7 @@ import asyncio
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 import ast
+from pathlib import Path
 
 class MCPmanager:
     def __init__(self, config_path="mcp_config.json"):
@@ -16,8 +17,14 @@ class MCPmanager:
         self.active_connections = {}  # 연결 유지용     
 
     def load_config(self):
+        # 패키지가 설치된 위치에서 mcp_config.json 찾기
+        config_path = Path(__file__).parent.parent / "mcp_config.json"
+        if not config_path.exists():
+            # 현재 실행 디렉토리에서도 찾기
+            config_path = Path(self.config_path)
+        
         try:
-            with open(self.config_path, "r", encoding="utf-8") as f:
+            with open(config_path, "r", encoding="utf-8") as f:
                 config = json.load(f)
                 self.server_configs = config.get("mcpServers", {})
                 print(f"✅ MCP 설정 로드 완료: {list(self.server_configs.keys())}")

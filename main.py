@@ -7,6 +7,7 @@ import uuid
 from ascii_banner import print_clean_banner, print_minimal_banner
 from dotenv import load_dotenv
 import os
+from pathlib import Path
 
 load_dotenv()
 Memory = MemoryManager()
@@ -20,8 +21,14 @@ async def chat():
     print_minimal_banner()
     print("💡 '끝'을 입력하면 대화가 종료됩니다.\n")
     # config.yaml 파일에서 system_prompt 읽기 및 LLM 초기화
+    # 패키지가 설치된 위치에서 config.yaml 찾기
+    config_path = Path(__file__).parent / "config.yaml"
+    if not config_path.exists():
+        # 현재 실행 디렉토리에서도 찾기
+        config_path = Path("config.yaml")
+    
     try:
-        with open("config.yaml", "r", encoding="utf-8") as f:
+        with open(config_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f)
             if config is None:
                 print("config 파일이 비어 있습니다.")
