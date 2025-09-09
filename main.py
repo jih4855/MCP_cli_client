@@ -23,7 +23,7 @@ config_loader = Configloader()
 async def chat():
     print_clean_banner()
     print_minimal_banner()
-    print("💡 '끝'을 입력하면 대화가 종료됩니다.\n"
+    print("💡 '끝'을 입력하면 대화가 종료됩니다.\n")
 
     # MCP 서버 시작
     mcp.load_config()

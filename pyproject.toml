@@ -2,6 +2,12 @@
 name = "mcp-cli-client"
 version = "0.1.0"
 description = "MCP CLI Client with multi-LLM support"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [ { name = "JIH", email = "" } ]
+keywords = ["mcp","cli","llm","gemini","openai"]
+py-modules = ["main", "ascii_banner"]
 dependencies = [
     "typer>=0.17.3",
     "python-dotenv>=1.1.1",
@@ -17,7 +23,23 @@ dependencies = [
 mcp-client = "main:main"
 
 [tool.hatch.build]
-include = ["main.py", "ascii_banner.py", "src/"]
+include = [
+  "main.py",
+  "ascii_banner.py",
+  "src/",
+  "src/config/config.yaml",
+  "src/config/mcp_config.json"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "main.py",
+  "ascii_banner.py",
+  "src/**"
+]
 
 [build-system]
 requires = ["hatchling"]
