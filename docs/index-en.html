@@ -141,17 +141,21 @@
         <section id="installation" class="section">
             <div class="container">
                 <h2 class="section-title">Quick Start</h2>
-                
+
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h3>📹 CLI Demo</h3>
+                    <div class="terminal" style="max-width: 800px; margin: 0 auto;">
+                        <div class="terminal-header">
+                            <span class="terminal-title">MCP CLI Client Demo</span>
+                        </div>
+                        <div style="padding: 1rem; background: #1a1a1a; border-radius: 0 0 8px 8px;">
+                            <img src="cli_demo.gif" alt="CLI Demo" style="width: 100%; height: auto; border-radius: 4px;">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="install-options">
-                    <div class="install-card active" data-method="editable">
-                        <h3>Editable Dev Install</h3>
-                        <p>Code changes immediately reflected</p>
-                    </div>
-                    <div class="install-card" data-method="build">
-                        <h3>Regular Install</h3>
-                        <p>Test deployment form</p>
-                    </div>
-                    <div class="install-card" data-method="pipx">
+                    <div class="install-card active" data-method="pipx">
                         <h3>pipx Install (Recommended)</h3>
                         <p>Isolated + global execution</p>
                     </div>
@@ -162,145 +166,7 @@
                 </div>
 
                 <div class="install-content">
-                    <div class="install-method active" id="editable-install">
-                        <div class="config-card">
-                            <h3>Editable Dev Install (Local Changes Reflected)</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Development installation where code changes are immediately reflected.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">sudo apt update && sudo apt install pipx</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pipx ensurepath</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">source ~/.bashrc</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Clone and Install Project</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Clone the project and install with pipx.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">git clone https://github.com/jih4855/MCP_cli_client.git</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">cd MCP_cli_client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pipx install .</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pipx ensurepath</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">source ~/.bashrc</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Run Anywhere</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Now you can use the mcp-client command anywhere.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">mcp-client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="output">Running safely in isolated environment</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="install-method" id="build-install">
-                        <div class="config-card">
-                            <h3>Regular Install (Deployment Form Test)</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Test in an environment identical to the actual deployment form.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">git clone https://github.com/jih4855/MCP_cli_client.git</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">cd MCP_cli_client</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Setup Virtual Environment and Install</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Create virtual environment and install as global command.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">python -m venv venv</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">source venv/bin/activate</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pip install -r requirements.txt</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pip install -e .</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Run Anywhere</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Now you can use the mcp-client command anywhere.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">mcp-client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="output">No virtual environment activation needed</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="install-method" id="pipx-install">
+                    <div class="install-method active" id="pipx-install">
                         <div class="config-card">
                             <h3>pipx Install (Recommended: Isolated + Global Execution)</h3>
                             <p style="color: #94a3b8; margin-bottom: 1rem;">Stable and isolated installation method for all environments.</p>
@@ -319,57 +185,9 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔐 Quick API Key Setup</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">Choose one of the following methods:</p>
-                            
-                            <h4 style="color: #e2e8f0; margin: 1rem 0 0.5rem;">1) Dedicated Config Directory (Recommended)</h4>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">mkdir -p ~/.config/mcp-client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">cat > ~/.config/mcp-client/.env <<'EOF'</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="command">GOOGLE_API_KEY=your_gemini_api_key_here</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="command">EOF</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h4 style="color: #e2e8f0; margin: 1rem 0 0.5rem;">2) Permanent Setup (zshrc)</h4>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">cat >> ~/.zshrc <<'EOF'</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="command">export GOOGLE_API_KEY=your_gemini_api_key_here</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="command">EOF</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">source ~/.zshrc</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
+
 
                     <div class="install-method" id="dev-install">
                         <div class="config-card">
@@ -539,11 +357,6 @@
         <section id="usage" class="section">
             <div class="container">
                 <h2 class="section-title">Usage</h2>
-
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <h3>📹 CLI Demo</h3>
-                    <img src="cli_demo.gif" alt="CLI Demo" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
-                </div>
 
                 <div class="config-card">
                     <h3>Basic Conversation</h3>

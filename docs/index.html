@@ -141,17 +141,21 @@
         <section id="installation" class="section">
             <div class="container">
                 <h2 class="section-title">🚀 빠른 시작</h2>
-                
+
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h3>📹 실행 데모</h3>
+                    <div class="terminal" style="max-width: 800px; margin: 0 auto;">
+                        <div class="terminal-header">
+                            <span class="terminal-title">MCP CLI Client Demo</span>
+                        </div>
+                        <div style="padding: 1rem; background: #1a1a1a; border-radius: 0 0 8px 8px;">
+                            <img src="cli_demo.gif" alt="CLI Demo" style="width: 100%; height: auto; border-radius: 4px;">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="install-options">
-                    <div class="install-card active" data-method="editable">
-                        <h3>Editable 개발 설치</h3>
-                        <p>코드 수정 즉시 반영</p>
-                    </div>
-                    <div class="install-card" data-method="build">
-                        <h3>일반 설치</h3>
-                        <p>배포 형태 테스트</p>
-                    </div>
-                    <div class="install-card" data-method="pipx">
+                    <div class="install-card active" data-method="pipx">
                         <h3>pipx 설치 (권장)</h3>
                         <p>격리 + 전역 실행</p>
                     </div>
@@ -162,85 +166,7 @@
                 </div>
 
                 <div class="install-content">
-                    <div class="install-method active" id="editable-install">
-                        <div class="config-card">
-                            <h3>Editable 개발 설치 (로컬 수정 반영)</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">코드 수정이 즉시 반영되는 개발용 설치 방법입니다.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">git clone https://github.com/jih4855/MCP_cli_client.git</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">cd MCP_cli_client</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">python -m venv venv</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">source venv/bin/activate</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pip install -e .</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">실행</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">pyproject.toml의 dependencies가 자동 설치되어 바로 실행 가능합니다.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">mcp-client</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="install-method" id="build-install">
-                        <div class="config-card">
-                            <h3>일반(비편집) 설치 (배포 형태 테스트)</h3>
-                            <p style="color: #94a3b8; margin-bottom: 1rem;">실제 배포 형태와 동일한 환경에서 테스트하는 방법입니다.</p>
-                            <div class="terminal">
-                                <div class="terminal-header">
-                                    <span class="terminal-title">Terminal</span>
-                                </div>
-                                <div class="terminal-body">
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="comment"># build 미설치 시: pip install build</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">python -m build</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">pip install dist/*.whl</span>
-                                    </div>
-                                    <div class="terminal-line">
-                                        <span class="prompt">$</span>
-                                        <span class="command">mcp-client --help</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="install-method" id="pipx-install">
+                    <div class="install-method active" id="pipx-install">
                         <div class="config-card">
                             <h3>pipx 설치 (권장: 격리 + 전역 실행)</h3>
                             <p style="color: #94a3b8; margin-bottom: 1rem;">모든 환경에서 안정적이고 격리된 설치 방법입니다.</p>
@@ -466,11 +392,6 @@
         <section id="usage" class="section">
             <div class="container">
                 <h2 class="section-title">📖 사용법</h2>
-
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <h3>📹 실행 데모</h3>
-                    <img src="cli_demo.gif" alt="CLI Demo" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
-                </div>
 
                 <div class="config-card">
                     <h3>기본 대화</h3>

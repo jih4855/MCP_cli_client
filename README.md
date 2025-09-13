@@ -42,27 +42,7 @@ Ubuntu/Linux 환경에서 MCP server와 연동하여 다양한 시스템 도구�
 
 ## 🚀 빠른 시작
 
-### 1) Editable 개발 설치 (로컬 수정 반영)
-```bash
-git clone https://github.com/jih4855/MCP_cli_client.git
-cd MCP_cli_client
-python -m venv venv
-source venv/bin/activate
-pip install -e .   # pyproject.toml 의 dependencies 자동 설치
-```
-실행:
-```bash
-mcp-client
-```
-
-### 2) 일반(비편집) 설치 (배포 형태 테스트)
-```bash
-python -m build      # build 미설치 시: pip install build
-pip install dist/*.whl
-mcp-client --help
-```
-
-### 3) pipx 설치 (권장: 격리 + 전역 실행)
+### 1) pipx 설치 (권장: 격리 + 전역 실행)
 ```bash
 pipx install git+https://github.com/jih4855/MCP_cli_client.git
 mcp-client --help
@@ -108,7 +88,7 @@ env | grep GOOGLE_API_KEY
 
 > 코드에서 실제로 탐색하는 순서: (1) 현재 실행 디렉토리 `.env` → (2) `~/.config/mcp-client/.env` → (3) `~/.mcp-client/.env` → (4) config.yaml 내 `api_key` 항목.
 
-### 4) 개발 모드 (직접 main 실행)
+### 2) 개발 모드 (직접 main 실행)
 
 1. **저장소 클론 및 가상환경**
 ```bash
