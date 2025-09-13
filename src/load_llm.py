@@ -190,7 +190,7 @@ class LLM:
                                 _convert_proto_args_to_dict(tool_calling.args)
                             )
                             all_results.append(f"도구 '{tool_calling.name}': {tool_result}")
-                            print(f"✅ 도구 '{tool_calling.name}' 실행 결과: {tool_result}")
+                            print(f"✅ 도구 '{tool_calling.name}' 도구 실행중.......")
 
                         # 모든 결과를 포함한 최종 응답
                         results_text = "\n".join(all_results)

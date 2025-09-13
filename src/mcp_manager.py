@@ -89,7 +89,7 @@ class MCPmanager:
             try:
                 session = await self._start_server_process(name, cmd, args)
                 self.sessions[name] = session
-                print(f"[MCP] 서버 시작 성공: {name} ({cmd})")
+                print(f"[MCP] 서버 시작 성공: {name}")
             except Exception as e:
                 self.failed_servers[name] = str(e)
                 print(f"[MCP][ERROR] 서버 시작 실패: {name} -> {e}")
@@ -130,7 +130,7 @@ class MCPmanager:
             try:
                 session = await self._start_server_process(name, cmd, args)
                 self.sessions[name] = session
-                print(f"[MCP] 서버 시작 성공: {name} ({cmd})")
+                print(f"[MCP] 서버 시작 성공: {name}")
             except Exception as e:
                 self.failed_servers[name] = str(e)
                 print(f"[MCP][ERROR] 서버 시작 실패: {name} -> {e}")
