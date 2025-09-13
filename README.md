@@ -194,6 +194,10 @@ python main.py           # 직접 실행
 
 ## 💡 사용 예시
 
+### 📹 실행 데모
+![CLI Demo](./docs/cli_demo.gif)
+
+### 텍스트 예시
 ```bash
 $ mcp-client
 💡 '끝'을 입력하면 대화가 종료됩니다.
@@ -207,7 +211,7 @@ user: 현재 시간과 시스템 정보 알려줘
 🔍 도구 호출: get_current_time
 🔍 도구 호출: get_ubuntu_system_info
 ✅ 도구 실행 완료
-assistant: 현재 시간은 2025년 9월 9일이고, Ubuntu 22.04 시스템에서 실행 중입니다. 
+assistant: 현재 시간은 2025년 9월 9일이고, Ubuntu 22.04 시스템에서 실행 중입니다.
 커널 버전은 5.15.0이며, 시스템 업타임은 2일 14시간입니다.
 
 user: 끝
